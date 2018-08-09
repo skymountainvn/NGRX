@@ -1,0 +1,6 @@
+<div class="container">
+    <app-word-form (AddWord)="onAddWord($event)"> </app-word-form>
+    <div *ngFor= "let word of words">
+         <word-info [wordInfo]='word' ></word-info>
+    </div>
+</div>
