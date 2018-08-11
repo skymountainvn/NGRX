@@ -1,13 +1,13 @@
 import { Component, Input,Output, EventEmitter  } from "@angular/core";
-import { word } from "../../types";
+import { Word } from "../../types";
 
 @Component ({
-    selector: 'app-word-info',
+    selector: 'app-word',
     templateUrl: './word-info.component.html'
 })
 
 export class wordInfoComponent {
-    @Input() wordInfo : word;
+    @Input() wordInfo : Word;
     @Output() RemoveWord = new EventEmitter<string>();
     @Output() Toggle = new EventEmitter<string>();
 

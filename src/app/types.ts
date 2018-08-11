@@ -5,7 +5,7 @@ export interface Word {
     isRemember : boolean;
 }
 
-export interface Appstate {
+export interface AppState {
     words: Word[];
     shoudShowForm: boolean;
 }
