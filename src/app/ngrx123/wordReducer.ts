@@ -7,5 +7,11 @@ const defaultWords : Word[] =   [
     {en:'FIVE', vn:"NAM", isRemember: true, _id:'a5'}
 ];
 export function wordReducer(state = defaultWords, action): Word[] {
+    if (action.type == "ADD_WORD") return state.concat(action.word);
+    if (action.type === 'REMOVE_WORD') return state.filter(w => w._id !== action._id);
+    if (action.type === 'TOGGLE_WORD') return state.map(w => {
+        if (w._id !== action._id) return w;
+        return { ...w, isRemember: !w.isRemember };
+    });
     return state;
 }

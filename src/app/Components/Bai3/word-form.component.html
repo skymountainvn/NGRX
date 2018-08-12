@@ -1,20 +1,27 @@
 <div class="form-group" style = "width:200px">
     <button 
-    class="btn btn-success form-control" 
-    *ngIf="!(shouldShowForm | async)" >
+        class="btn btn-success form-control" 
+        (click)="showForm()"
+        *ngIf="!(shouldShowForm | async)" >
         SHOW 
     </button>
     <br>
-    <div *ngIf="shouldShowForm | async" >
+    <div *ngIf="shouldShowForm| async " >
     <input class="form-control" placeholder="ENGLISH" [(ngModel)]="txten"> 
-    <!-- <input class="form-control" placeholder="ENGLISH" >  -->
     <br>
     <input class="form-control" placeholder="VIETNAMESE" [(ngModel)]="txtvn"> 
-    <!-- <input class="form-control" placeholder="VIETNAMESE" >  -->
     <br>
-    <button class="btn btn-success form-control" > ADD WORD </button>
+    <button 
+        class="btn btn-success form-control" 
+        (click)= 'addWord()'> 
+            ADD WORD 
+    </button>
     <br>
     <br>
-    <button class="btn btn-danger form-control" > CANCEL </button>
+    <button 
+        class="btn btn-danger form-control" 
+        (click)="hideForm()"> 
+            CANCEL 
+    </button>
     </div>
 </div>

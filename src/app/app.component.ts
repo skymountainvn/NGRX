@@ -14,7 +14,7 @@ import { Observable } from '../../node_modules/rxjs';
 export class AppComponent {
   words: Observable <Word[]>
   constructor(private store: Store<AppState>) {
-    this.words = this.store.select('words')
+    this.words = this.store.select('words');
   }
       
 }

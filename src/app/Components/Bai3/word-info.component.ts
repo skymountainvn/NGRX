@@ -1,6 +1,7 @@
 import { Component, Input,Output, EventEmitter  } from "@angular/core";
-import { Word } from "../../types";
-
+import { AppState, Word } from "../../types";
+import { Store } from '@ngrx/store';
+;
 @Component ({
     selector: 'app-word',
     templateUrl: './word-info.component.html'
@@ -8,14 +9,14 @@ import { Word } from "../../types";
 
 export class wordInfoComponent {
     @Input() wordInfo : Word;
-    @Output() RemoveWord = new EventEmitter<string>();
-    @Output() Toggle = new EventEmitter<string>();
+
+    constructor(private store: Store<AppState>){}
 
     removeWord() {
-        this.RemoveWord.emit(this.wordInfo._id);
+        this.store.dispatch({type: 'REMOVE_WORD',_id: this.wordInfo._id});
     }
-    toggle() {
-        this.Toggle.emit(this.wordInfo._id);
+  
+    toggleWord() {
+        this.store.dispatch({type: 'TOGGLE_WORD',_id: this.wordInfo._id});
     }
-
 }
