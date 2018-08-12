@@ -8,4 +8,5 @@ export interface Word {
 export interface AppState {
     words: Word[];
     shoudShowForm: boolean;
+    filterStatus: string;
 }

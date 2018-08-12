@@ -1,4 +1,4 @@
-import { Component, Input,Output, EventEmitter  } from "@angular/core";
+import { Component, Input  } from "@angular/core";
 import { AppState, Word } from "../../types";
 import { Store } from '@ngrx/store';
 ;

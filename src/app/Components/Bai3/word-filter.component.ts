@@ -1,16 +1,15 @@
-import { Component, Input,Output, EventEmitter  } from "@angular/core";
-
+import { Component } from "@angular/core";
+import { Store } from '@ngrx/store';
+import { AppState } from "../../types";
+import { Observable } from "../../../../node_modules/rxjs";
 @Component ({
     selector: 'app-word-filter',
     templateUrl: './word-filter.component.html'
 })
 
 export class wordFilterComponent {
-    @Input() filterStatus: string;
-    @Output() onChangeFilterStatus = new EventEmitter();
-    onChange(evt) {
-        const newFilterStatus = evt.target.value;
-        this.onChangeFilterStatus.emit(newFilterStatus);
+    filterStatus: Observable <string>;
+    constructor(private store: Store<AppState>) {
+        this.filterStatus = this.store.select('filterStatus')
     }
-
 }

@@ -5,7 +5,7 @@ import { StoreModule} from '@ngrx/store'
 
 import { shouldShowFormReducer } from './ngrx123/shouldShowFormReducer';
 import { wordReducer  } from './ngrx123/wordReducer';
-
+import { filterStatusReducer  } from './ngrx123/filterStatusReducer';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +17,7 @@ import { wordInfoComponent } from './Components/Bai3/word-info.component';
   declarations: [
     AppComponent,
     wordFormComponent,
-    // wordFilterComponent, 
+    wordFilterComponent, 
     wordInfoComponent
   ],
   imports: [
@@ -25,7 +25,9 @@ import { wordInfoComponent } from './Components/Bai3/word-info.component';
     FormsModule,
     StoreModule.forRoot({ 
       shouldShowForm : shouldShowFormReducer, 
-      words : wordReducer })
+      words : wordReducer,
+      filterStatus : filterStatusReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
