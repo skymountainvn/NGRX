@@ -8,8 +8,15 @@ import { Observable } from "../../../../node_modules/rxjs";
 })
 
 export class wordFilterComponent {
-    filterStatus: Observable <string>;
+    filterStatus: Observable<string>;
     constructor(private store: Store<AppState>) {
-        this.filterStatus = this.store.select('filterStatus')
+        this.filterStatus = this.store.select('filterStatus');
+    }
+
+    onChange(evt) {
+        this.store.dispatch({
+            type: 'SET_FILTER_STATUS',
+            filterStatus: evt.target.value
+        });
     }
 }

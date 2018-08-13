@@ -1,9 +1,12 @@
 <select 
     class="form-control" 
     style = "width: 200px" 
-    value =" {{ filterStatus | async }}"
+    value = "{{filterStatus|async}}"
+    (change) = "onChange($event);"
+
 >
     <option value="SHOW_ALL"> SHOW ALL</option>
     <option value="SHOW_REMEMBER"> SHOW REMEMBER</option>
     <option value="SHOW_FORGOT"> SHOW FORGOT</option>
 </select>
+
