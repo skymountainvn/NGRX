@@ -1,13 +1,16 @@
+
 import { Word } from '../types';
-const defaultWords : Word[] =   [
-    {en:'ONE', vn:"MOT", isRemember: true, _id:'a1'},
-    {en:'TWO', vn:"HAI", isRemember: false, _id:'a2'},
-    {en:'THREE', vn:"BA", isRemember: true, _id:'a3'},
-    {en:'FOUR', vn:"BON", isRemember: false, _id:'a4'},
-    {en:'FIVE', vn:"NAM", isRemember: true, _id:'a5'}
-];
-export function wordReducer(state = defaultWords, action): Word[] {
-    if (action.type == "ADD_WORD") return state.concat(action.word);
+
+// const defaultWords: Word[] = [
+//     { en: 'One', vn: 'Mot', isRemember: true, _id: 'abcd1' },
+//     { en: 'Two', vn: 'Hai', isRemember: false, _id: 'abcd2' },
+//     { en: 'Three', vn: 'Ba', isRemember: false, _id: 'abcd3' },
+//     { en: 'Four', vn: 'Bon', isRemember: true, _id: 'abcd4' }
+// ]
+
+export function wordReducer(state = [], action): Word[] {
+    if (action.type === 'SET_WORDS') return action.words;
+    if (action.type === 'ADD_WORD') return [action.word, ...state];
     if (action.type === 'REMOVE_WORD') return state.filter(w => w._id !== action._id);
     if (action.type === 'TOGGLE_WORD') return state.map(w => {
         if (w._id !== action._id) return w;

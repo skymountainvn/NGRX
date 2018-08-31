@@ -2,33 +2,30 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState, Word } from '../../types'
 import { Observable } from '../../../../node_modules/rxjs';
+
+import {WordService} from '../../word.service'  ;
+
+
+
 @Component ({
     selector: 'app-word-form',
     templateUrl: './word-form.component.html'
 })
 
+
 export class wordFormComponent {
     shouldShowForm: Observable<boolean>;
-    constructor (private store : Store<AppState>) {
+    constructor (private store : Store<AppState>,private wordService: WordService) {
         this.shouldShowForm = this.store.select('shouldShowForm');
     }
+  
+    txtEn = '';
+    txtVn = '';
+    showForm() { this.store.dispatch({ type: 'SHOW_FORM' }); }
+    hideForm() { this.store.dispatch({ type: 'HIDE_FORM' }); }
 
-
-    txten = ' ';
-    txtvn = ' ';
-
-    showForm() {this.store.dispatch({ type: "SHOW_FORM"}); }
-    hideForm() {this.store.dispatch({ type: "HIDE_FORM"}); }
     addWord() {
-        const { txten, txtvn} = this;
-        const word: Word = { 
-            _id: Math.random + ' ',
-            en: txten,
-            vn: txtvn,
-            isRemember: false
-        };
-        this.store.dispatch({ type: 'ADD_WORD', word});
-        this.txten = ' ';
-        this.txtvn = ' ';
+        const { txtEn, txtVn } = this;
+        this.wordService.addWord(txtEn, txtVn);
     }
 }
