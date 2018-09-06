@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule} from '@ngrx/store'
 import { HttpModule } from '@angular/http'
+import { RouterModule, Routes } from '@angular/router'
 
 import { shouldShowFormReducer } from './ngrx123/shouldShowFormReducer';
 import { wordReducer  } from './ngrx123/wordReducer';
@@ -13,10 +14,17 @@ import { AppComponent } from './app.component';
 import { wordFormComponent } from './Components/Bai3/word-form.component';
 import { wordFilterComponent } from './Components/Bai3/word-filter.component';
 import { wordInfoComponent } from './Components/Bai3/word-info.component';
+import { WordDetailComponent } from './word-detail.component';
+import { WordListComponent } from './word-list.component';
 
 import { WordService } from './word.service';
 import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
+
+const routeConfig: Routes = [
+  { path: 'list', component: WordListComponent },
+  { path: 'detail', component: WordDetailComponent }
+]
 
 @NgModule({
   declarations: [
@@ -24,7 +32,10 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
     wordFormComponent,
     wordFilterComponent, 
     wordInfoComponent, 
-    SignInFormComponent, SignUpFormComponent
+    SignInFormComponent, 
+    SignUpFormComponent,
+    WordDetailComponent,
+    WordListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
       shouldShowForm : shouldShowFormReducer, 
       words : wordReducer,
       filterStatus : filterStatusReducer
-    })
+    }),
+    RouterModule.forRoot(routeConfig)
   ],
   providers: [WordService],
   bootstrap: [AppComponent]
