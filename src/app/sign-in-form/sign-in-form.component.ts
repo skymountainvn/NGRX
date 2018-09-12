@@ -16,7 +16,7 @@ export class SignInFormComponent implements OnInit {
     });
   }
 
-  onSubmitForm() {
+  onSubmitForm() {     
     console.log(this.formSignIn.value);
   }
 

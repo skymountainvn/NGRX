@@ -8,7 +8,7 @@ import { Observable } from '../../node_modules/rxjs';
 // import { Observable } from 'rxjs/Observable'
 // import { toPromise } from 'rxjs/add/operator/toPromise';
 import { WordService } from './word.service'
-
+import { Person } from './Person';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,7 @@ import { WordService } from './word.service'
 export class AppComponent {
   words:Word[];
   filterStatus: string;
+  people = Person.people;
   constructor(
     private store: Store<AppState>, 
     private http: Http,

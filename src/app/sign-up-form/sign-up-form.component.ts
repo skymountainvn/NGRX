@@ -18,7 +18,7 @@ export class SignUpFormComponent implements OnInit {
       rePassword: new FormControl('', Validators.required)
     }, passwordsMustMatch);
   }
-  
+   
   onSubmitForm() {
     console.log(this.formSignUp.value);
   }

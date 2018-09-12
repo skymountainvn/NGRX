@@ -1,5 +1,4 @@
-import {} from '@angular/core';
-
+import {Component} from '@angular/core';
 
 @Component ({
     template: `<p>WORD LIST</p>`,
@@ -7,5 +6,5 @@ import {} from '@angular/core';
 })
 
 export class WordListComponent{
-
+  
 }
