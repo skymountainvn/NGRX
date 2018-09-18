@@ -5,7 +5,10 @@ const { json } = require('body-parser');
 const { wordRouter } = require('./controllers/word.route');
 
 const app = express();
-// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  }));
 app.use(json());
 
 app.use('/word', wordRouter);

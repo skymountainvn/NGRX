@@ -1,6 +1,5 @@
 import { Injectable }  from '@angular/core';
-import { Http, Response } from '@angular/http';
-// import  '../../node_modules/rxjs/add/operator/toPromise';
+import { Http} from '@angular/http';
 import { Word, AppState } from './types';
 import { Store } from '@ngrx/store'
 // import '../../node_modules/rxjs/add/operator/toPromise';
@@ -24,14 +23,16 @@ export class WordService {
         .then(response => response.json())
         .then(resJson =>  {
             if (!resJson.success) return;
-            this.store.dispatch({ type: 'SET_WORD', words: resJson.words });
+            this.store.dispatch({ type: 'SET_WORD', words: resJson.words })
+            console.log(resJson)
         });
     }
 
 
     addWord(en: string, vn: string) {
+        const body = { en, vn, isRemember: false };
         const URL = 'http://localhost:3000/word';
-        return this.http.post(URL, { en, vn })
+        return this.http.post(URL, body)
         .toPromise()
         .then(response => response.json())
         .then(resJson => {
@@ -40,25 +41,25 @@ export class WordService {
         });
     }
 
-    // removeWord(_id: string) {
-    //     const URL = 'http://localhost:3000/word';
-    //     return this.http.delete(`${URL}/${_id}`)
-    //     .toPromise()
-    //     .then(response => response.json())
-    //     .then(resJson => {
-    //         if (!resJson.success) return;
-    //         this.store.dispatch({ type: 'REMOVE_WORD', _id });
-    //     });
-    // }
+    removeWord(_id: string) {
+        const URL = 'http://localhost:3000/word';
+        return this.http.delete(`${URL}/${_id}`)
+        .toPromise()
+        .then(response => response.json())
+        .then(resJson => {
+            if (!resJson.success) return;
+            this.store.dispatch({ type: 'REMOVE_WORD', _id });
+        });
+    }
 
-    // toggleWord(_id: string, isMemorized) {
-    //     const URL = 'http://localhost:3000/word';
-    //     return this.http.put(`${URL}/${_id}`, { isMemorized })
-    //     .toPromise()
-    //     .then(response => response.json())
-    //     .then(resJson => {
-    //         if (!resJson.success) return;
-    //         this.store.dispatch({ type: 'TOGGLE_WORD', _id });
-    //     });
-    // }
+    toggleWord(_id: string, isRemember) {
+        const URL = 'http://localhost:3000/word';
+        return this.http.put(`${URL}/${_id}`, { isRemember })
+        .toPromise()
+        .then(response => response.json())
+        .then(resJson => {
+            if (!resJson.success) return;
+            this.store.dispatch({ type: 'TOGGLE_WORD', _id });
+        });
+    }
 }

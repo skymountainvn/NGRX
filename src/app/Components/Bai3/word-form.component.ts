@@ -28,4 +28,14 @@ export class wordFormComponent {
         const { txtEn, txtVn } = this;
         this.wordService.addWord(txtEn, txtVn);
     }
+    //     const word: Word = {
+    //         _id: Math.random() +'',
+    //         en: txtEn,
+    //         vn: txtVn,
+    //         isRemember: false
+    //     };
+    //     this.store.dispatch({ type: 'ADD_WORD', word});
+    //     this.txtEn ='';
+    //     this.txtVn ='';
+    // }
 }

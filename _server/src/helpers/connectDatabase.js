@@ -9,5 +9,5 @@ function getDatabaseUri() {
 
 console.log(getDatabaseUri())
 
-mongoose.connect(getDatabaseUri(),{ useNewUrlParser: true })
+mongoose.connect(getDatabaseUri())
 .catch(() => process.exit(1));

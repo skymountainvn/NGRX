@@ -1,24 +1,21 @@
-<!-- <div class="container">
+<div class="container">
   <br>
   <app-word-form > </app-word-form>
   <app-word-filter></app-word-filter>
   <div *ngFor= "let word of filterWords">
-    <app-word 
-      [wordInfo] = 'word' >
-   
-    </app-word>
+    <app-word [wordInfo] = 'word' > </app-word>
   </div>
   
-</div> -->
-
-<!-- <div class="container">
+</div>
+<!-- 
+<div class="container">
   <app-sign-in-form>123 </app-sign-in-form>
-</div> -->
+</div>
 
 <nav>
   <a [routerLink]="['/']"  routerLinkActive="active"  > HOME </a>
   <a [routerLink]="['/list']"  routerLinkActive="active"  > LIST </a>
-  <!-- <a *ngFor='let person in people'  [routerLink]="['/detail']" routerLinkActive="active" > DETAIL </a> -->
+  <a *ngFor='let person in people'  [routerLink]="['/detail']" routerLinkActive="active" > DETAIL </a>
 <ul>
   <li *ngFor="let person of people" >
       <a 
@@ -29,4 +26,4 @@
   </li>
 </ul>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
